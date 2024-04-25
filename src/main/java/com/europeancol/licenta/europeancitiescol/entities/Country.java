@@ -1,4 +1,4 @@
-package com.europeancol.licenta.europeancitiescol.cliapp.countries_collector;
+package com.europeancol.licenta.europeancitiescol.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonSetter;

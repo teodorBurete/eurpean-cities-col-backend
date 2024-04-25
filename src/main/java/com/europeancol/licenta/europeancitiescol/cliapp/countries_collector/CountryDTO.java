@@ -1,5 +1,6 @@
 package com.europeancol.licenta.europeancitiescol.cliapp.countries_collector;
 
+import com.europeancol.licenta.europeancitiescol.entities.Country;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
