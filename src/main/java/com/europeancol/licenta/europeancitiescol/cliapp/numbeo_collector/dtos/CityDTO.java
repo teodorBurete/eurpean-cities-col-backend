@@ -4,18 +4,26 @@ import java.util.List;
 
 public class CityDTO {
 
-    private final String city;
+    private final String cityName;
     private final List<CategoryDTO> categoryDTOs;
 
     public CityDTO(String city, List<CategoryDTO> categoryDTOs) {
-        this.city = city;
+        this.cityName = city;
         this.categoryDTOs = categoryDTOs;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public List<CategoryDTO> getCategoryDTOs() {
+        return categoryDTOs;
     }
 
     @Override
     public String toString() {
         return "CityDTO{" +
-                "city='" + city + '\'' +
+                "city='" + cityName + '\'' +
                 ", categoryDTOs=" + categoryDTOs +
                 "}\n";
     }

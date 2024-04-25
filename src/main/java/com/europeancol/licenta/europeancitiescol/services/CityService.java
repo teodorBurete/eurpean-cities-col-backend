@@ -33,4 +33,9 @@ public class CityService {
         Country country = countryService.findCountryByCountryCode(city.getCountryCode());
         city.setCountry(country);
     }
+
+    @Transactional
+    public City findCityByName(String cityName) {
+        return cityRepository.findByName(cityName);
+    }
 }

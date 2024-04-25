@@ -12,6 +12,14 @@ public class CategoryDTO {
         this.entryDTOs = entryDTOs;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public List<EntryDTO> getEntryDTOs() {
+        return entryDTOs;
+    }
+
     @Override
     public String toString() {
         return "CategoryDTO{" +

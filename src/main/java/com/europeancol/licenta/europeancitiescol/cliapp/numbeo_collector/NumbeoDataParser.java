@@ -37,19 +37,19 @@ public class NumbeoDataParser {
     private ArrayList<CategoryDTO> collectCategories(Elements trHeaders) {
         ArrayList<CategoryDTO> categoryDTOs = new ArrayList<>();
         for (Element trHeader : trHeaders) {
-            collectEntities(trHeader, categoryDTOs);
+            collectEntries(trHeader, categoryDTOs);
         }
         return categoryDTOs;
     }
 
-    private void collectEntities(Element trHeader, ArrayList<CategoryDTO> categoryDTOs) {
+    private void collectEntries(Element trHeader, ArrayList<CategoryDTO> categoryDTOs) {
         String categoryTitle = trHeader.getElementsByClass("category_title").text();
 
         Element currentRow = trHeader.nextElementSibling();
         ArrayList<EntryDTO> entries = new ArrayList<>();
         while (currentRow != null && currentRow.child(0).is("td")) {
             String entryName = currentRow.child(0).text();
-            String price = currentRow.child(1).text();
+            String price = currentRow.child(1).text().replaceAll("[^\\d.]", "");
             entries.add(new EntryDTO(entryName, price));
 
             currentRow = currentRow.nextElementSibling();

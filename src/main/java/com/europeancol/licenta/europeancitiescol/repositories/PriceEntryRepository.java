@@ -1,9 +1,10 @@
 package com.europeancol.licenta.europeancitiescol.repositories;
 
 import com.europeancol.licenta.europeancitiescol.entities.City;
+import com.europeancol.licenta.europeancitiescol.entities.PriceEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CityRepository extends JpaRepository<City, Long> {
+public interface PriceEntryRepository extends JpaRepository<PriceEntry, Long> {
 
-    City findByName(String name);
+    void deleteAllByCity(City city);
 }

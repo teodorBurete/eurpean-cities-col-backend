@@ -10,6 +10,14 @@ public class EntryDTO {
         this.price = price;
     }
 
+    public String getEntryName() {
+        return entryName;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return "Entry{" +
