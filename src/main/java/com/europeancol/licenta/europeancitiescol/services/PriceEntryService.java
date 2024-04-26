@@ -33,4 +33,7 @@ public class PriceEntryService {
     }
 
 
+    public List<PriceEntry> getByCityId(Long cityId) {
+        return priceEntryRepository.findAllByCityId(cityId);
+    }
 }

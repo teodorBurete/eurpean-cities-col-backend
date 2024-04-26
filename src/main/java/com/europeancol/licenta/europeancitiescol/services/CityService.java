@@ -21,6 +21,11 @@ public class CityService {
     }
 
     @Transactional
+    public List<City> findAll() {
+        return cityRepository.findAll();
+    }
+
+    @Transactional
     public void saveCities(List<City> cities) {
         cities.forEach(this::assignCountry);
         cityRepository.deleteAll();
