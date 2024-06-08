@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class CitiesCSVParser {
 
-    private final static String PATH = "src/main/resources/csv/cities.csv";
+    private final static String PATH = "src/main/resources/csv/cities_with_coordinates.csv";
 
     public List<City> readCSV() throws FileNotFoundException {
         List<City> citiesList;

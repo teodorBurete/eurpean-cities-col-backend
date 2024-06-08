@@ -29,7 +29,6 @@ public class Country implements Serializable {
     private Integer phone;
     @Column
     String countryCode;
-
     public Country() {
     }
 

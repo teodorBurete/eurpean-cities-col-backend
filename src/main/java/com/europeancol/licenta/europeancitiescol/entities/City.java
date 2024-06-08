@@ -39,6 +39,12 @@ public class City implements Serializable {
     @CsvBindByName
     @Column
     private Double gdp;
+    @CsvBindByName
+    @Column
+    private Double latitude;
+    @CsvBindByName
+    @Column
+    private Double longitude;
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
