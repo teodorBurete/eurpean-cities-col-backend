@@ -2,6 +2,7 @@ package com.europeancol.licenta.europeancitiescol.services;
 
 import com.europeancol.licenta.europeancitiescol.entities.City;
 import com.europeancol.licenta.europeancitiescol.entities.Country;
+import com.europeancol.licenta.europeancitiescol.exceptions.ResourceNotFoundException;
 import com.europeancol.licenta.europeancitiescol.repositories.CityRepository;
 import com.europeancol.licenta.europeancitiescol.repositories.CountryRepository;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,9 @@ public class CityService {
     @Transactional
     public City findCityByName(String cityName) {
         return cityRepository.findByName(cityName);
+    }
+
+    public City findCityById(Long id) {
+        return cityRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Could not find city with id=" + id));
     }
 }

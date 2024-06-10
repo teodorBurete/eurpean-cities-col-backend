@@ -25,8 +25,13 @@ public class CountryController {
         return countryService.findAll();
     }
 
-    @GetMapping("/{countryCode}")
+    @GetMapping("/code/{countryCode}")
     public Country findCountryByCountryCode(@PathVariable(value = "countryCode") String countryCode) {
         return countryService.findCountryByCountryCode(countryCode);
+    }
+
+    @GetMapping("/{id}")
+    public Country findCountryById(@PathVariable(value = "id") Long id) {
+        return countryService.findCountryById(id);
     }
 }

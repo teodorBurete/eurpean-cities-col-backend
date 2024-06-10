@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "countries")
 public class Country implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "country_id", nullable = false, unique = true)
     private Long id;
     @Column
     private String name;
@@ -29,6 +31,13 @@ public class Country implements Serializable {
     private Integer phone;
     @Column
     String countryCode;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "country_id")
+    private List<City> cities;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
+    @PrimaryKeyJoinColumn
+    private CountryEconomicIndicators economicIndicators;
+
     public Country() {
     }
 
@@ -119,6 +128,27 @@ public class Country implements Serializable {
         this.countryCode = countryCode;
     }
 
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
+    public CountryEconomicIndicators getEconomicIndicators() {
+        return economicIndicators;
+    }
+
+    @JsonSetter("economic_indicators")
+    public void setEconomicIndicators(CountryEconomicIndicators economicIndicators) {
+        this.economicIndicators = economicIndicators;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Country{" +
@@ -132,4 +162,6 @@ public class Country implements Serializable {
                 ", phone=" + phone +
                 '}';
     }
+
+
 }

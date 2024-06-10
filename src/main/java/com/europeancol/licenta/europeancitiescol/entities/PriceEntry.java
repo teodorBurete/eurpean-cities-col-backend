@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class PriceEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "price_entry_id", nullable = false, unique = true)
     private Long id;
     @ManyToOne
     private City city;
