@@ -28,8 +28,8 @@ public class DataCollectorCLIApp implements CommandLineRunner {
 
         //countriesDataCollector.saveCountries();
         //ArrayDeque<CityDTO> cities =  numbeoDataCollector.collectNumbeoData();
-         // citiesDataCollector.saveCities();
-        //numbeoDataCollector.savePriceEntries();
+        // citiesDataCollector.saveCities();
+        // numbeoDataCollector.savePriceEntries();
 
     }
 }

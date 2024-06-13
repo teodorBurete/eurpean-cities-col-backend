@@ -19,7 +19,12 @@ public class CityDTOConverter {
                 PriceEntry priceEntry = new PriceEntry();
 
                 priceEntry.setName(entryDTO.getEntryName());
-                priceEntry.setPrice(Double.valueOf(entryDTO.getPrice()));
+                // System.out.println("ERROR HERE AT NAME: "+entryDTO.getEntryName()+", PRICE: "+ entryDTO.getPrice());
+                try {
+                    priceEntry.setPrice(Double.valueOf(entryDTO.getPrice()));
+                } catch (NumberFormatException e) {
+                    priceEntry.setPrice(null);
+                }
                 priceEntry.setCategory(categoryDTO.getCategoryName());
                 res.add(priceEntry);
             }

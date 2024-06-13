@@ -22,9 +22,9 @@ public class NumbeoDataCollector {
     private static final List<String> cities = new ArrayList<>();
 
     static {
-        cities.add("Bucharest");
-        cities.add("Cluj-napoca");
-        cities.add("Brasov");
+//        cities.add("Helsinki");
+//        cities.add("Espoo");
+//        cities.add("Tampere");
     }
 
     public NumbeoDataCollector(NumbeoDataParser numbeoDataParser, PriceEntryService priceEntryService, CityDTOConverter cityDTOConverter) {
