@@ -4,10 +4,7 @@ import com.europeancol.licenta.europeancitiescol.entities.City;
 import com.europeancol.licenta.europeancitiescol.entities.Country;
 import com.europeancol.licenta.europeancitiescol.services.CityService;
 import com.europeancol.licenta.europeancitiescol.services.CountryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,10 @@ public class CityController {
     @GetMapping("/{id}")
     public City findCityById(@PathVariable(value = "id") Long id) {
         return cityService.findCityById(id);
+    }
+
+    @GetMapping("/search")
+    public List<City> searchCitiesByName(@RequestParam String query) {
+        return cityService.searchCitiesByName(query);
     }
 }

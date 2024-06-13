@@ -10,6 +10,7 @@ public class PriceEntry {
     @Column(name = "price_entry_id", nullable = false, unique = true)
     private Long id;
     @ManyToOne
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
     @Column
     private String name;

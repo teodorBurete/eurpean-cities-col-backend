@@ -62,7 +62,7 @@ public class City implements Serializable {
         return countryCode;
     }
 
-    public Boolean getCapital() {
+    public Boolean isCapital() {
         return isCapital;
     }
 
@@ -94,7 +94,7 @@ public class City implements Serializable {
         this.countryCode = countryCode;
     }
 
-    public void setCapital(Boolean capital) {
+    public void setIsCapital(Boolean capital) {
         isCapital = capital;
     }
 

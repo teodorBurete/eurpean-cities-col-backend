@@ -48,4 +48,11 @@ public class CityService {
     public City findCityById(Long id) {
         return cityRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Could not find city with id=" + id));
     }
+    public List<City> searchCitiesByName(String query) {
+        return cityRepository.findByNameContainingIgnoreCase(query);
+    }
+
+    public List<String> getAllCityNames() {
+        return cityRepository.findAllCityNames();
+    }
 }
