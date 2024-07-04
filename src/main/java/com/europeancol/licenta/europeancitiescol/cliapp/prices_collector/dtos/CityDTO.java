@@ -1,4 +1,4 @@
-package com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector.dtos;
+package com.europeancol.licenta.europeancitiescol.cliapp.prices_collector.dtos;
 
 import java.util.List;
 

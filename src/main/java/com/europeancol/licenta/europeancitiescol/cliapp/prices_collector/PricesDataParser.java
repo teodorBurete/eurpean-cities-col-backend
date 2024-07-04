@@ -1,8 +1,8 @@
-package com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector;
+package com.europeancol.licenta.europeancitiescol.cliapp.prices_collector;
 
-import com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector.dtos.CategoryDTO;
-import com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector.dtos.CityDTO;
-import com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector.dtos.EntryDTO;
+import com.europeancol.licenta.europeancitiescol.cliapp.prices_collector.dtos.CategoryDTO;
+import com.europeancol.licenta.europeancitiescol.cliapp.prices_collector.dtos.CityDTO;
+import com.europeancol.licenta.europeancitiescol.cliapp.prices_collector.dtos.EntryDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class NumbeoDataParser {
+public class PricesDataParser {
 
     public CityDTO parseData(String html, String city) {
         Document document = Jsoup.parse(html);

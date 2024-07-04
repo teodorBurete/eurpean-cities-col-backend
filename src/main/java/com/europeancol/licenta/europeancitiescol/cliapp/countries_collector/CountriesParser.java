@@ -14,11 +14,10 @@ public class CountriesParser {
         WebClient client = WebClient.create("https://kering-group.opendatasoft.com");
         for (EUCountriesEnum euCountry : EUCountriesEnum.values()) {
             String countryCode = euCountry.getCountryCode();
-      /*      if (!countryCode.equals("RO")) // REMOVE AFTER DEBUGGING
-                continue;*/
+
             Country countryResponse = client.get()
-                    .uri(uriBuilder -> uriBuilder.path("/api/explore/v2.1/catalog/datasets/geonames-countries/records") ///?select=impact_country%2C%20population%2C%20area%2C%20currency_name%2C%20phone%2C%20continent&where=impact_country%20%3D%20%27Romania%27&limit=20")
-                            .queryParam("select", "impact_country, population, capital, area, currency_code, currency_name, phone, iso_a2") //impact_country%2C%20population%2C%20area%2C%20currency_name%2C%20phone%2C%20continent
+                    .uri(uriBuilder -> uriBuilder.path("/api/explore/v2.1/catalog/datasets/geonames-countries/records")
+                            .queryParam("select", "impact_country, population, capital, area, currency_code, currency_name, phone, iso_a2")
                             .queryParam("where", "iso_a2= '" + countryCode + "'")
                             .queryParam("limit", "1")
                             .build())

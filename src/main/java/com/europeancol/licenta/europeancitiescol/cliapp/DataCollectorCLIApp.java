@@ -2,7 +2,7 @@ package com.europeancol.licenta.europeancitiescol.cliapp;
 
 import com.europeancol.licenta.europeancitiescol.cliapp.cities_collector.CitiesDataCollector;
 import com.europeancol.licenta.europeancitiescol.cliapp.countries_collector.CountriesDataCollector;
-import com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector.NumbeoDataCollector;
+import com.europeancol.licenta.europeancitiescol.cliapp.prices_collector.PricesDataCollector;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -13,13 +13,12 @@ import java.io.FileNotFoundException;
 @Order(1)
 public class DataCollectorCLIApp implements CommandLineRunner {
     private final CountriesDataCollector countriesDataCollector;
-    private final NumbeoDataCollector numbeoDataCollector;
+    private final PricesDataCollector pricesDataCollector;
     private final CitiesDataCollector citiesDataCollector;
 
-    public DataCollectorCLIApp(CountriesDataCollector countriesDataCollector, NumbeoDataCollector numbeoDataCollector, CitiesDataCollector citiesDataCollector) {
+    public DataCollectorCLIApp(CountriesDataCollector countriesDataCollector, PricesDataCollector pricesDataCollector, CitiesDataCollector citiesDataCollector) {
         this.countriesDataCollector = countriesDataCollector;
-        this.numbeoDataCollector = numbeoDataCollector;
-
+        this.pricesDataCollector = pricesDataCollector;
         this.citiesDataCollector = citiesDataCollector;
     }
 
@@ -29,7 +28,8 @@ public class DataCollectorCLIApp implements CommandLineRunner {
         //countriesDataCollector.saveCountries();
         //ArrayDeque<CityDTO> cities =  numbeoDataCollector.collectNumbeoData();
         // citiesDataCollector.saveCities();
-        // numbeoDataCollector.savePriceEntries();
+        //     citiesDataCollector.saveCities();
+        //pricesDataCollector.savePriceEntries();
 
     }
 }

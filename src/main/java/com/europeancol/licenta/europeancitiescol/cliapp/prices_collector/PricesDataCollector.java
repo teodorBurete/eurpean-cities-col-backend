@@ -1,10 +1,8 @@
-package com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector;
+package com.europeancol.licenta.europeancitiescol.cliapp.prices_collector;
 
-import com.europeancol.licenta.europeancitiescol.cliapp.numbeo_collector.dtos.CityDTO;
+import com.europeancol.licenta.europeancitiescol.cliapp.prices_collector.dtos.CityDTO;
 import com.europeancol.licenta.europeancitiescol.entities.PriceEntry;
-import com.europeancol.licenta.europeancitiescol.services.CityService;
 import com.europeancol.licenta.europeancitiescol.services.PriceEntryService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -14,40 +12,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class NumbeoDataCollector {
+public class PricesDataCollector {
 
-    private final NumbeoDataParser numbeoDataParser;
+    private final PricesDataParser pricesDataParser;
     private final PriceEntryService priceEntryService;
     private final CityDTOConverter cityDTOConverter;
     private static final List<String> cities = new ArrayList<>();
 
     static {
-//        cities.add("Helsinki");
-//        cities.add("Espoo");
-//        cities.add("Tampere");
+        cities.add("Cluj-Napoca");
+        cities.add("Brasov");
+        cities.add("Bucharest");
     }
 
-    public NumbeoDataCollector(NumbeoDataParser numbeoDataParser, PriceEntryService priceEntryService, CityDTOConverter cityDTOConverter) {
-        this.numbeoDataParser = numbeoDataParser;
+    public PricesDataCollector(PricesDataParser pricesDataParser, PriceEntryService priceEntryService, CityDTOConverter cityDTOConverter) {
+        this.pricesDataParser = pricesDataParser;
         this.priceEntryService = priceEntryService;
         this.cityDTOConverter = cityDTOConverter;
     }
 
-    private ArrayDeque<CityDTO> collectNumbeoData() throws InterruptedException {
+    private ArrayDeque<CityDTO> collectPricesData() throws InterruptedException {
 
         ArrayDeque<CityDTO> citiesData = new ArrayDeque<>();
-       // List<String> cities = cityService.getAllCityNames();
 
         for (String city : cities) {
             try {
                 System.out.println("CITY: " + city);
                 String html = getResponse(city);
-                citiesData.add(numbeoDataParser.parseData(html, city));
+                citiesData.add(pricesDataParser.parseData(html, city));
 
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-            Thread.sleep(4000); //to avoid suspicious behaviour
+            Thread.sleep(4000);
         }
 
         return citiesData;
@@ -63,7 +60,7 @@ public class NumbeoDataCollector {
     }
 
     public void savePriceEntries() throws InterruptedException {
-        ArrayDeque<CityDTO> cityDTOs = this.collectNumbeoData();
+        ArrayDeque<CityDTO> cityDTOs = this.collectPricesData();
         for (CityDTO cityDTO : cityDTOs) {
 
             List<PriceEntry> priceEntries = cityDTOConverter.convertCityDTOtoPriceEntryList(cityDTO);
@@ -73,7 +70,7 @@ public class NumbeoDataCollector {
     }
 
     public void printPriceEntries() throws InterruptedException {
-        ArrayDeque<CityDTO> cityDTOs = this.collectNumbeoData();
+        ArrayDeque<CityDTO> cityDTOs = this.collectPricesData();
         for (CityDTO cityDTO : cityDTOs) {
 
             List<PriceEntry> priceEntries = cityDTOConverter.convertCityDTOtoPriceEntryList(cityDTO);
